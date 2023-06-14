@@ -15,6 +15,7 @@ import {MatTableModule} from '@angular/material/table';
 import {MatPaginatorModule} from '@angular/material/paginator';
 import {MatCardModule} from '@angular/material/card';
 import {MatTabsModule} from '@angular/material/tabs';
+import {MatMenuModule} from '@angular/material/menu';
 
 
 import { AppRoutingModule } from './app-routing.module';
@@ -22,12 +23,22 @@ import { AppComponent } from './app.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { CustomerComponent } from './customer/customer.component';
 import { CustomerService } from './service/customer.service';
+import { MenuComponent } from './menu/menu.component';
+import { HomeComponent } from './home/home.component';
+import { CategoryComponent } from './category/category.component';
+import { ProductComponent } from './product/product.component';
+import { CategoryService } from './service/category.service';
+import { ProductService } from './service/product.service';
 
 
 @NgModule({
   declarations: [
     AppComponent,
-    CustomerComponent
+    CustomerComponent,
+    MenuComponent,
+    HomeComponent,
+    CategoryComponent,
+    ProductComponent
   ],
   imports: [
     BrowserModule,
@@ -46,10 +57,13 @@ import { CustomerService } from './service/customer.service';
     MatTableModule,
     MatPaginatorModule,
     MatCardModule,
-    MatTabsModule
+    MatTabsModule,
+    MatMenuModule
   ],
   providers: [
     CustomerService,
+    CategoryService,
+    ProductService,
     DatePipe
   ],
   bootstrap: [AppComponent]
