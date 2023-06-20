@@ -1,7 +1,6 @@
-import { NgModule } from '@angular/core';
+import { DEFAULT_CURRENCY_CODE, LOCALE_ID, NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 import { HttpClientModule } from '@angular/common/http';
-
 import { MatSlideToggleModule } from '@angular/material/slide-toggle';
 import { MatButtonModule } from '@angular/material/button';
 import { MatDividerModule } from '@angular/material/divider';
@@ -16,8 +15,7 @@ import {MatPaginatorModule} from '@angular/material/paginator';
 import {MatCardModule} from '@angular/material/card';
 import {MatTabsModule} from '@angular/material/tabs';
 import {MatMenuModule} from '@angular/material/menu';
-
-
+import {MatSelectModule} from '@angular/material/select';
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
@@ -29,7 +27,9 @@ import { CategoryComponent } from './category/category.component';
 import { ProductComponent } from './product/product.component';
 import { CategoryService } from './service/category.service';
 import { ProductService } from './service/product.service';
-
+import localePt from '@angular/common/locales/pt';
+import { registerLocaleData } from '@angular/common';
+registerLocaleData(localePt);
 
 @NgModule({
   declarations: [
@@ -58,13 +58,23 @@ import { ProductService } from './service/product.service';
     MatPaginatorModule,
     MatCardModule,
     MatTabsModule,
-    MatMenuModule
+    MatMenuModule,
+    MatSelectModule
   ],
   providers: [
     CustomerService,
     CategoryService,
     ProductService,
-    DatePipe
+    DatePipe, 
+    {
+      provide: LOCALE_ID,
+      useValue: 'pt'
+      },
+
+    {
+      provide: DEFAULT_CURRENCY_CODE,
+      useValue: 'BRL'
+    }
   ],
   bootstrap: [AppComponent]
 })
